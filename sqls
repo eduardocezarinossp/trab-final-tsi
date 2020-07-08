@@ -1,0 +1,13 @@
+CREATE DATABASE teste;
+use TESTE;
+
+CREATE TABLE pessoas (
+     idpessoa MEDIUMINT NOT NULL AUTO_INCREMENT,
+     nome CHAR(50),
+     cpf CHAR(21),
+     sexo CHAR(20),
+     idade int
+     PRIMARY KEY (id)
+);
+
+ALTER TABLE pessoas ADD column credito double;
