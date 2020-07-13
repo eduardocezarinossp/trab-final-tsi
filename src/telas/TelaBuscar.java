@@ -51,8 +51,7 @@ public class TelaBuscar extends JFrame{
 		btnCadastrar.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent e) {
 				Pessoa p1 = new Pessoa();
-				p1.setCredito(Double.parseDouble(txtCredito.getText()));
-				p1.setSexo(cboSexo.getSelectedIndex());
+				
 				
 				CRUD_pessoas crud = new CRUD_pessoas();
 				

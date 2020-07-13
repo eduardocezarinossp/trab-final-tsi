@@ -18,7 +18,7 @@ public class CRUD_pessoas {
 	
 	public ArrayList<Pessoa> readAll(Pessoa p1){
 		ArrayList<Pessoa> lista = new ArrayList<Pessoa>();
-		String sql = "SELECT * from pessoas";
+		String sql = "SELECT * from cad_pessoas";
 		Conexao c = new Conexao();
 		try {
 			ResultSet res = c.read(sql);
@@ -50,7 +50,7 @@ public class CRUD_pessoas {
 			lista = new String[tamanho];
 			int aux = 0;
 			while(res.next()) {
-				lista[aux] = res.getString("nome");
+				lista[aux] = res.getString("nome")+" - "+res.getInt("idcad_pessoas");
 				aux++;
 			}
 			
