@@ -29,12 +29,10 @@ public class Tela extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-<<<<<<< Updated upstream
+
 				// TODO Auto-generated method stub
 				TelaCadastroPessoa telaCadastro = new TelaCadastroPessoa();
-=======
-				TelaCadastro telaCadastro = new TelaCadastro();
->>>>>>> Stashed changes
+
 				dispose();
 			}
 		});
