@@ -18,10 +18,15 @@ public class TelaCadastroVenda extends JFrame{
 //	JLabel lblCpf = new JLabel("CPF");
 //	JTextField txtCpf = new JTextField(null, 20);
 		
-	JButton btnVendedor = new JButton("Selecione o vendedor");
+	
 	JLabel lblValor = new JLabel("Valor venda");
 	JTextField txtValor = new JTextField(null, 20);
+	
+	JButton btnVendedor = new JButton("Selecione o vendedor");
 	JLabel lblVendedor = new JLabel("vendedor..");
+	
+	JButton btnComprador = new JButton("Selecione o comprador");
+	JLabel lblComprador = new JLabel("comprador..");
 	
 	JButton btnCadastrar = new JButton("Cadastrar");
 	JButton btnLimpar = new JButton("Limpar Campos");
@@ -32,10 +37,9 @@ public class TelaCadastroVenda extends JFrame{
 
 	}
 	public TelaCadastroVenda() {
-		CRUD_pessoas crud = new CRUD_pessoas();
 		System.setProperty("java.awt.headless", "false"); 
 		setSize(600,200);
-		setLayout(new GridLayout(3,2)); 
+		setLayout(new GridLayout(2,1)); 
 		
 		getContentPane().add(lblValor);
 		getContentPane().add(txtValor);
@@ -43,6 +47,9 @@ public class TelaCadastroVenda extends JFrame{
 	    
 		getContentPane().add(btnVendedor);
 		getContentPane().add(lblVendedor);
+
+		getContentPane().add(btnComprador);
+		getContentPane().add(lblComprador);
 		
 		getContentPane().add(btnCadastrar);
 		
@@ -62,15 +69,25 @@ public class TelaCadastroVenda extends JFrame{
 			} 
 			} );
 		btnVendedor.addActionListener(new ActionListener() { 
-			  public void actionPerformed(ActionEvent e) {
-				  String[] options = crud.readAllString();
-				  Integer response =  JOptionPane.showOptionDialog(null, "Selecione o comprador", "Title",
-				        JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
-				        null, options, options[0]);
-					lblVendedor.setText(response.toString());
-					System.out.println(response);
-//				
+		  public void actionPerformed(ActionEvent e) {
+			  CRUD_pessoas crud = new CRUD_pessoas();
+
+			  String[] options = crud.readAllString();
+			  Integer response =  JOptionPane.showOptionDialog(null, "Selecione", "Vendedor",
+			        JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+			        null, options, options[0]);
+			  String nome = "";
+			  int aux = 0;
+			  for(String i : options) {
+				  if(aux == response) {
+					  nome = i+" - "+response;
+				  }
+				  aux++;  
 			  }
+				lblVendedor.setText(nome);
+				System.out.println(response);
+//				
+			}
 
 			private void cadastra() {
 				// TODO Auto-generated method stub

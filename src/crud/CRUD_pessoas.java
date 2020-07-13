@@ -37,7 +37,7 @@ public class CRUD_pessoas {
 	}
 	public String[] readAllString(){
 		String[] lista = null;
-		String sql = "SELECT * from pessoas";
+		String sql = "SELECT * from cad_pessoas";
 		Conexao c = new Conexao();
 		try {
 			ResultSet res = c.read(sql);
