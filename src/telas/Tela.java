@@ -20,7 +20,7 @@ public class Tela extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				TelaCadastro telaCadastro = new TelaCadastro();
+				TelaCadastroPessoa telaCadastro = new TelaCadastroPessoa();
 				dispose();
 			}
 		});
