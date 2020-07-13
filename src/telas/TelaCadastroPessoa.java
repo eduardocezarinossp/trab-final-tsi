@@ -49,7 +49,7 @@ public class TelaCadastroPessoa extends JFrame{
 				CRUD_pessoas crud = new CRUD_pessoas();
 				String retorno = crud.cadastra(p);
 				JOptionPane.showMessageDialog (null, "Inserido");
-			  }	
+			  }
 
 			private void cadastra() {
 				// TODO Auto-generated method stub

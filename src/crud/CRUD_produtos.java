@@ -8,7 +8,7 @@ import objetos.Produto;
 
 public class CRUD_produtos {
 	public String cadastra(Produto p) {
-		String sql = "INSERT INTO cad_produtos(descricao, preco_unitario) values('"+p.getDescricao()+"',"+p.getPreco_unitario()+")";
+		String sql = "INSERT INTO cad_produtos(descricao, preco_unitario) values("+p.getDescricao()+","+p.getPreco_unitario()+")";
 		Conexao c = new Conexao();
 		c.insere(sql);
 		return "ok";
@@ -24,29 +24,21 @@ public class CRUD_produtos {
 			Produto p;
 			while(resultado.next()) {
 				p = new Produto();
-				p.setId_produto(resultado.getInt("id_produto"));
 				p.setDescricao(resultado.getString("descricao"));
 				p.setPreco_unitario(resultado.getDouble("preco_unitario"));
-				lista.add(p);
 			}
-			return lista;
 		} catch (Exception e) {
-			ArrayList<Produto> error = new ArrayList<Produto>();
-			Produto p = new Produto();
-			p.setDescricao("Erro");
-			error.add(p);
-			return error;
 			// TODO: handle exception
 		} finally {
 			c.desconecta();
 		}
 			
-		
+		return lista;
 	}
 	
 	public Produto getProduto(Produto p ) {
 		Produto p2 = new Produto();
-		String sql = "SELECT * FROM cad_produtos where descricao ilike '%"+p.getDescricao()+"%';";
+		String sql = "SELECT * FROM cad_produtos where descricao ilike '%"+p.getDescricao()+"%' or (preco_unitario >= "+p.getPreco_unitario()+"-10.0 and preco_unitario <= "+p.getPreco_unitario()+"+10.0;";
 		Conexao c = new Conexao();
 		try {
 			ResultSet resultado = c.read(sql);

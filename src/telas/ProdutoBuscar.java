@@ -22,17 +22,22 @@ import objetos.Produto;
 
 public class ProdutoBuscar extends JFrame{
 	JPanel pnCampos = new JPanel();
+	JScrollPane pnDados = new JScrollPane();
 	JTabbedPane tela = new JTabbedPane();
 
 	
 	JLabel lblDescricao = new JLabel("Descricao");
 	JTextField txtDescricao = new JTextField(null,5);
 	
+	JLabel lblValorAproximado = new JLabel("Valor aproximado (~10)");
+	JTextField txtValorAproximado = new JTextField(null,5);
+	
+	
 	
 	JButton btnBuscar = new JButton("Buscar");
 	JButton btnLimpar = new JButton("Limpar Campos");
 	
-	JTextArea resultado = new JTextArea(null, 200, 200);
+	JTextArea resultado = new JTextArea();
 	
 	JLabel lblTeste = new JLabel("teste");
 	
@@ -41,37 +46,32 @@ public class ProdutoBuscar extends JFrame{
 		
 		
 		System.setProperty("java.awt.headless", "false"); 
-		setSize(600,400);
+		setSize(600,200);
 		setLayout(new BorderLayout());
-		
+
 //		tela.setLayout(new BorderLayout());
-		pnCampos.setLayout(new GridLayout(4,2));
+		pnCampos.setLayout(new GridLayout(3,2));
 		pnCampos.add(lblDescricao);
-		pnCampos.add(txtDescricao);
+		pnCampos.add(txtValorAproximado);
 
-
-		pnCampos.add(btnLimpar);
-		
-//		pnDados.add(resultado);
-		
-		pnCampos.setSize(200,200);
+		pnCampos.add(lblValorAproximado);
+		pnCampos.add(txtValorAproximado);
 		
 		pnCampos.add(btnBuscar);
 		btnBuscar.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent e) {
 				Produto p = new Produto();
 				CRUD_produtos crud = new CRUD_produtos();
-				if(txtDescricao.getText().isEmpty()) {
+				if(txtValorAproximado.getText().isEmpty() && txtDescricao.getText().isEmpty()) {
 					
 					for(Produto p2 : crud.readAll()) {
 						System.out.println(p2.getId_produto()+"-"+p2.getDescricao()+"- R$"+p2.getPreco_unitario());
-						resultado.append(p2.getId_produto()+"-"+p2.getDescricao()+"- R$"+p2.getPreco_unitario()+"\n");
 					}
 				} else {
 					p.setDescricao(txtDescricao.getText());
+					p.setPreco_unitario(Double.parseDouble(txtValorAproximado.getText()));
 					p = crud.getProduto(p);
 					System.out.println(p.getId_produto()+"-"+p.getDescricao()+"- R$"+p.getPreco_unitario());
-					resultado.append(p.getId_produto()+"-"+p.getDescricao()+"- R$"+p.getPreco_unitario()+"\n");
 				}
 				
 				
@@ -84,20 +84,17 @@ public class ProdutoBuscar extends JFrame{
 			
 			} );
 		
-		btnBuscar.addActionListener(new ActionListener() { 
-			  public void actionPerformed(ActionEvent e) {
-				resultado.setText("");			    
-				txtDescricao.setText("");
-			  }
-
-			
-			} );
 		
+		pnCampos.add(btnLimpar);
 		
-		resultado.setSize(200, 300);
-		pnCampos.add(resultado);
+		pnDados.add(resultado);
+		
+		pnCampos.setSize(200,200);
+//		tela.add(pnCampos,BorderLayout.WEST);
+//		tela.add(pnDados,BorderLayout.EAST);
+		
 		tela.addTab("Filtros", pnCampos);
-		
+		tela.addTab("resultado", pnDados);
 
 		getContentPane().add(tela);
 		setVisible(true);
