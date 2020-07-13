@@ -20,7 +20,7 @@ public void setCon(Connection con) {
 	public Conexao() {
 		try {
 		Class.forName(driverJDBC);
-		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/trabalho_final", "root", "");
+		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/trabalho_final", "root", "Portinari123");
 		this.setCon(con);
 //		Statement stat = con.createStatement();
 //	    stat.executeUpdate("INSERT INTO ALUNOS (nome) VALUES('João')");

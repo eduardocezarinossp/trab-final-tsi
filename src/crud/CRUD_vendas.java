@@ -28,11 +28,14 @@ public class CRUD_vendas {
 		try {
 			ResultSet res = c.read(sql);
 			while(res.next()) {
+				
 				Venda v = new Venda();
 				v.setComprador(res.getString("comprador"));
 				v.setVendedor(res.getString("vendedor"));
 				v.setDescricao(res.getString("descricao"));
 				v.setValor_venda(res.getString("valor"));
+				lista.add(v);
+				System.out.println("venda");
 				
 			}
 			

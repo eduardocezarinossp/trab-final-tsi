@@ -71,7 +71,8 @@ public class Tela extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog (null, "Cadastrar venda");
+				TelaCadastroVenda t = new TelaCadastroVenda();
+//				JOptionPane.showMessageDialog (null, "Cadastrar venda");
 //				dispose();
 			}
 		});
@@ -81,7 +82,8 @@ public class Tela extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog (null, "consultar venda");
+				VendaBuscar v = new VendaBuscar();
+//				JOptionPane.showMessageDialog (null, "consultar venda");
 //				dispose();
 			}
 		});
