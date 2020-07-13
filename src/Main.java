@@ -9,9 +9,9 @@ public class Main {
 	public static void main(String[] args) {
 //		TelaCadastroVenda t = new TelaCadastroVenda();
 //		TelaCadastroVenda tela1 = new TelaCadastroVenda();
-//		Tela tela = new Tela();
+		Tela tela = new Tela();
 //		TelaCadastro telaCadastro = new TelaCadastro();
-		TelaBuscar telaBuscar = new TelaBuscar();
+//		TelaBuscar telaBuscar = new TelaBuscar();
 	}
 	
 }

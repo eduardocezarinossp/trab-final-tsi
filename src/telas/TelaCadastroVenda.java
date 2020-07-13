@@ -74,6 +74,7 @@ public class TelaCadastroVenda extends JFrame{
 			  v.setValor_venda(txtValor.getText());
 			  
 			  crud.cadastra(v);
+			  JOptionPane.showMessageDialog (null, "Venda Inserida");
 			  System.out.println(v);
 			  }
 
