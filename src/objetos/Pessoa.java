@@ -4,6 +4,16 @@ public class Pessoa {
 	private String nome, cpf, sexo;
 	private int idade;
 	private double credito;
+	private int idcad_pessoas;
+	
+	
+	
+	public int getIdcad_pessoas() {
+		return idcad_pessoas;
+	}
+	public void setIdcad_pessoas(int idcad_pessoas) {
+		this.idcad_pessoas = idcad_pessoas;
+	}
 	public String getNome() {
 		return nome;
 	}

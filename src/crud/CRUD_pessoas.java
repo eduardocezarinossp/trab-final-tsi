@@ -18,12 +18,19 @@ public class CRUD_pessoas {
 	
 	public ArrayList<Pessoa> readAll(Pessoa p1){
 		ArrayList<Pessoa> lista = new ArrayList<Pessoa>();
-		String sql = "SELECT * from cad_pessoas";
+		String sql = "";
+		if(p1.getNome().isEmpty()) {
+			sql = "SELECT * from cad_pessoas";
+		} else {
+			sql = "SELECT * FROM cad_pessoas where nome ilike '%"+p1.getNome()+"%';";
+		}
+		
 		Conexao c = new Conexao();
 		try {
 			ResultSet res = c.read(sql);
 			while(res.next()) {
 				Pessoa p = new Pessoa();
+				p.setIdcad_pessoas(res.getInt("idcad_pessoas"));
 				p.setNome(res.getString("nome"));
 				p.setCpf(res.getString("cpf"));
 				lista.add(p);

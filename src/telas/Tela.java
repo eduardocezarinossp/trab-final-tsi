@@ -73,7 +73,7 @@ public class Tela extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				TelaCadastroVenda t = new TelaCadastroVenda();
 //				JOptionPane.showMessageDialog (null, "Cadastrar venda");
-//				dispose();
+				dispose();
 			}
 		});
 
@@ -84,7 +84,7 @@ public class Tela extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				VendaBuscar v = new VendaBuscar();
 //				JOptionPane.showMessageDialog (null, "consultar venda");
-//				dispose();
+				dispose();
 			}
 		});
 		menuFile.add(mnCadastrar);
